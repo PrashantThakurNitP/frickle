@@ -1,4 +1,5 @@
-{% load static %}
+
+
 
 
 
@@ -13,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>FRICLE</title>
+    <title>PRASHANT'S PORTFOLIA</title>
   </head>
   <body>
   	<!-- start -->
@@ -31,20 +32,28 @@
 <nav class="navbar navbar-inverse">
   
 <ul class="nav justify-content-end">
-		  <li class="nav-item">
+
+
+	<li class="nav-item">
 		    <a class="btn btn-info" class="nav-link active" href="{% url 'home' %}">HOME</a>
 		  </li>
+
 		  
+
 		 
 		  
+		 
 		  <li class="nav-item">
-		    <a class="nav-link" href="{% url 'feeds' %}">YOUR FEEDS</a>
+		    <a class="nav-link" href="{% url "createtodo" %}">CREATE</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="btn btn-success" href="/todo/">TODO</a>
+		  	<li class="nav-item">
+		    <a class="btn btn-success" class="nav-link active" href="{% url 'home_todo' %}">TODO</a>
+		  </li>
+		    <a class="nav-link" href="{% url "currenttodos" %}">ACTIVE</a>
 		  </li>
 		   <li class="nav-item">
-		    <a class="nav-link" href="{% url 'addpost' %}">ADDPOST</a>
+		    <a class="nav-link" href="{% url "completedtodos" %}">COMPLETED</a>
 		  </li>
 		  
  
@@ -74,13 +83,13 @@
 
 <ul class="nav justify-content-end">
 			 <li class="nav-item">
-			<a   class="btn btn-info" class="nav-link active" href="{% url 'signupuser' %}">SignUp</a>
+			<a   class="btn btn-info" class="nav-link active" href="{% url 'signupusertodo' %}">SignUp</a>
 			</li>
 			<h2 class="nav-item"> 
      				<a class="nav-link" href="">    </a>
 			 </h2>
 			 <li class="nav-item">
-			<a    class="btn btn-info" class="nav-link active" href="{% url 'loginuser' %}">Login</a>
+			<a    class="btn btn-info" class="nav-link active" href="{% url 'loginusertodo' %}">Login</a>
 			</li>
 </ul>
 </nav>

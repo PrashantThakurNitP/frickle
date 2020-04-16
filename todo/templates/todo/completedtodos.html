@@ -1,0 +1,26 @@
+{% extends 'todo/base_todo.html' %}
+
+{% block content %}
+
+<div class="container text-center">
+<h1 class="alert alert-success" >Completed To-do</h1>
+<ul>
+	{% for todo in todos %}
+      <div class="jumbotron text-center">
+      <h4>
+      	<a href="{% url 'viewtodo' todo.id %}">
+      	{% if todo.important %}<b>{% endif %}
+      		{{todo.title}} <!-- way to highlight if impotant -->
+
+      	{% if todo.important %}</b>{% endif %}
+      	{% if todo.memo %} - {{todo.memo}} {% endif %}
+            {{ todo.datecompleted|date:'M j Y H:i' }}
+      </a>
+      </h4>
+      </div>
+     
+	{% endfor %}
+
+</ul>
+</div>
+{% endblock %}

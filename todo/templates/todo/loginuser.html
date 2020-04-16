@@ -1,0 +1,16 @@
+
+{% extends 'todo/base_todo.html' %}
+
+{% block content %}
+<div class="container text-center">
+
+<h1 class="alert alert-success" >LOG IN</h1>
+<br>
+<h2>{{error}}</h2>
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button class="btn btn-success" type="submit">LOG IN</button>
+</form>
+</div>
+{% endblock %}

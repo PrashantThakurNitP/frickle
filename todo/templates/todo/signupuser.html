@@ -1,0 +1,30 @@
+
+<style type="text/css">
+	.d
+	{
+		display: flex
+			align-self: top;
+		  
+         padding-left: 20vw;
+	}
+</style>
+{% extends 'todo/base_todo.html' %}
+
+{% block content %}
+
+
+	<div class="container text-center"><h1 class="alert alert-success">SIGN UP</h1></div>
+<div class="d">
+<br>
+<h2>{{error}}</h2>
+		
+		<form method="POST">
+			<div class="form-group" >
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button class="btn btn-success" type="submit">Sign Up</button>
+		</div>
+		</form>
+		
+</div>
+{% endblock %}
