@@ -3,16 +3,78 @@
 
 {% block content %}
 
-error is {{error1}}   user is  {{user1}}
-form {{form1}}
-<h1>CREATE</h1>
-<br>
-<h2>{{error}}</h2>
-<form  method="POST" enctype="multipart/form-data">
-	{% csrf_token %}
-	{{ form.as_p }}
 
-	<button type="submit">create</button>
-</form>
+
+<style type="text/css">
+	.d
+	{
+		display: flex
+			align-self: top;
+		  
+         padding-left: 20vw;
+	}
+</style>
+
+<div class="container text-center">
+<h1 class="alert alert-success">SOMETHING TO SHARE</h1>
+</div>
+
+
+
+
+
+
+
+
+			
+					<h2>{{error}}</h2>
+
+
+
+
+
+<div class="d">
+
+
+
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+
+
+						  <div class="form-group row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+							    <div class="col-sm-10">
+							      {{form.title}}
+							    </div>
+							  </div>
+							  <div class="form-group row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+							    <div class="col-sm-10">
+							     	{{form.description}}
+							    </div>
+
+								<div class="form-check">
+							      {{form.image}}
+							  <label class="form-check-label" for="defaultCheck1">
+							    Important
+							  </label>
+								</div>
+
+						 	 </div>
+				
+				<button class="btn btn-success" type="submit">POST</button>
+			</form>
+
+
+
+
+
+
+</div>
+
+
+  
+	
+
 
 {% endblock %}

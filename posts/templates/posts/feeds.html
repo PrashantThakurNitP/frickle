@@ -2,28 +2,32 @@
 
 {% load static %}
 {% block content %}
-<h1>Current page</h1>
+
+<h1 class="alert alert-success">POSTS</h1>
 <ul>
 	{% for feed in feeds %}
-      <li>
-      	<b>{{feed.title}} <!-- way to highlight if impotant -->
-      	</b>
-      	{% if feed.description %} - {{feed.description}} {% endif %}
-      </li>
+            <div class="jumbotron text-center">
+      	<h2><b>{{feed.title}} </b></h2><!-- way to highlight if impotant -->
+      	
+                  @ {{feed.user_new}}
+                  
 
-      <br>
+                </br>
+                  
                   {% if feed.image %}
-                  {{ feed.image.url }}
-                  <img src="{{ feed.image.url }}",height=400, width=400>
+                  <img src="{{ feed.image.url }}",height=100, width=100>
                    
                         {% endif %}
-                  
-                                                            
-		
-		<br>
-		user is {{feed.user_new}}
+                  </br>
+
+      	{% if feed.description %} - {{feed.description}} {% endif %}
+      </div>
+
+     
+		 
      
 	{% endfor %}
 
 </ul>
+
 {% endblock %}
