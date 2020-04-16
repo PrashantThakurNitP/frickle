@@ -1,0 +1,22 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+{% if User.is_authenticated %}
+
+Logged in as {{user_new.username}}
+<br>
+
+<form action="{% url 'logoutuser' %}" method="POST">
+	{% csrf_token %}
+	<button type="submit">LOGOUT</button>
+	
+</form>
+{% else %}
+<a href="#">SignUp</a>
+<a href="#">Login</a>
+
+{% endif %}
+
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,18 @@
+
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+error is {{error1}}   user is  {{user1}}
+form {{form1}}
+<h1>CREATE</h1>
+<br>
+<h2>{{error}}</h2>
+<form  method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+
+	<button type="submit">create</button>
+</form>
+
+{% endblock %}

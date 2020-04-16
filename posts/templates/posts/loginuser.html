@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+{{user}} is user
+
+<h1>LOG IN</h1>
+<br>
+<h2>{{error}}</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">LOG IN</button>
+</form>
+
+{% endblock %}
+
+

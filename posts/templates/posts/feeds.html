@@ -1,0 +1,29 @@
+{% extends 'posts/base.html' %}
+
+{% load static %}
+{% block content %}
+<h1>Current page</h1>
+<ul>
+	{% for feed in feeds %}
+      <li>
+      	<b>{{feed.title}} <!-- way to highlight if impotant -->
+      	</b>
+      	{% if feed.description %} - {{feed.description}} {% endif %}
+      </li>
+
+      <br>
+                  {% if feed.image %}
+                  {{ feed.image.url }}
+                  <img src="{{ feed.image.url }}",height=400, width=400>
+                   
+                        {% endif %}
+                  
+                                                            
+		
+		<br>
+		user is {{feed.user_new}}
+     
+	{% endfor %}
+
+</ul>
+{% endblock %}
