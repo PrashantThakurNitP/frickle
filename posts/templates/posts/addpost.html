@@ -11,7 +11,7 @@
 		display: flex
 			align-self: top;
 		  
-         padding-left: 20vw;
+         padding-left: 10vw;
 	}
 </style>
 
@@ -40,24 +40,32 @@
 			<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 
-
+						
 						  <div class="form-group row">
 							    <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
 							    <div class="col-sm-10">
 							      {{form.title}}
 							    </div>
 							  </div>
-							  <div class="form-group row">
+
+							
+ 								<div class="form-group row">
 							    <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
 							    <div class="col-sm-10">
 							     	{{form.description}}
 							    </div>
 
+								   
+
+ 								
+
 								<div class="form-check">
-							      {{form.image}}
+							      
 							  <label class="form-check-label" for="defaultCheck1">
-							    Important
+							  Image
 							  </label>
+							  <h2>    </h2>
+							  {{form.image}}
 								</div>
 
 						 	 </div>
