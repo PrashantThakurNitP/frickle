@@ -27,50 +27,48 @@
 
 
 {% if user.is_authenticated %}
-<div>
-  
-<nav class="navbar navbar-inverse">
+<div class="container-md">
+<nav class="navbar navbar-dark bg-dark">
   
 <ul class="nav justify-content-end">
 
 
-	<li class="nav-item">
+	<h3 class="nav-item">
 		    <a class="btn btn-info" class="nav-link active" href="{% url 'home' %}">HOME</a>
-		  </li>
+		  </h3>
 
 		  
 
 		 
 		  
 		 
-		  <li class="nav-item">
+		  <h3 class="nav-item">
 		    <a class="nav-link" href="{% url "createtodo" %}">CREATE</a>
-		  </li>
-		  <li class="nav-item">
-		  	<li class="nav-item">
+		  </h3>
+		  
+		  	<h3 class="nav-item">
 		    <a class="btn btn-success" class="nav-link active" href="{% url 'home_todo' %}">TODO</a>
-		  </li>
+		  </h3>
+		  <h3>
 		    <a class="nav-link" href="{% url "currenttodos" %}">ACTIVE</a>
-		  </li>
-		   <li class="nav-item">
+		  </h3>
+		   <h3 class="nav-item">
 		    <a class="nav-link" href="{% url "completedtodos" %}">COMPLETED</a>
-		  </li>
+		  </h3>
 		  
  
-</ul>
 
-	<ul class="nav justify-content-end">
-			    <h2 class="nav-item"><button type="button" class="btn btn-success">   
+			    <h3 class="nav-item"><button type="button" class="btn btn-success">   
 			  			Logged in as {{user.username}}</button> </h2>
-			    <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
+			    <h3 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
 
-				 <h2  class="nav-item" > 
+				 <h3  class="nav-item" > 
 						<form action="{% url 'logoutuser' %}" method="POST">
 							{% csrf_token %}
 							<button  class="btn btn-danger" type="submit">LOGOUT</button>
 							
 						</form>
-				</h2>
+				</h3>
 	  </ul>
 </nav>
 </div>
@@ -79,7 +77,7 @@
 
 {% else %}
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-dark bg-dark">
 
 <ul class="nav justify-content-end">
 			 <li class="nav-item">

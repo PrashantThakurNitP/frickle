@@ -1,5 +1,29 @@
 {% load static %}
+<style type="text/css">
+	#a1{
+font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+}
+#b1
+{
+	font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Great Vibes', cursive;
+}
+</style>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
 
+  // SideNav Button Initialization
+  $(".button-collapse").sideNav();
+  // SideNav Scrollbar Initialization
+  var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+  var ps = new PerfectScrollbar(sideNavScrollbar);
+})
+</script>
 
 
 <!--   navbar end  -->
@@ -15,7 +39,7 @@
 
     <title>FRICLE</title>
   </head>
-  <body>
+ <body>
   	<!-- start -->
 
 
@@ -32,19 +56,19 @@
   
 <ul class="nav justify-content-end">
 		  <li class="nav-item">
-		    <a class="btn btn-info" class="nav-link active" href="{% url 'home' %}">HOME</a>
+		    <a class="btn btn-info" id="a1" class="nav-link active" href="{% url 'home' %}">HOME</a>
 		  </li>
 		  
 		 
 		  
 		  <li class="nav-item">
-		    <a class="nav-link" href="{% url 'feeds' %}">YOUR FEEDS</a>
+		    <a class="nav-link" id="a1" href="{% url 'feeds' %}">YOUR FEEDS</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="btn btn-success" href="/todo/">TODO</a>
+		    <a class="btn btn-success" id="a1" href="/todo/">TODO</a>
 		  </li>
 		   <li class="nav-item">
-		    <a class="nav-link" href="{% url 'addpost' %}">ADDPOST</a>
+		    <a class="nav-link" id="a1" href="{% url 'addpost' %}">ADDPOST</a>
 		  </li>
 		  
  
@@ -65,7 +89,6 @@
 	  </ul>
 </nav>
 </div>
-
 
 
 {% else %}

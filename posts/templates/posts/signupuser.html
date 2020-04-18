@@ -1,31 +1,81 @@
-
-
-<style type="text/css">
-	.d
-	{
-		display: flex
-			align-self: top;
-		  
-         padding-left: 20vw;
-	}
-</style>
 {% extends 'posts/base.html' %}
 
 {% block content %}
 
+<style type="text/css">
+  
+.f{
+  color:blue;
+}
+.d
+  {
+    display: flex
+    position:relative;
+      align-self: center;
+      
+          padding-left: 20vw;
+  }
 
-	<div class="container text-center"><h1 class="alert alert-success">SIGN UP</h1></div>
-<div class="d">
-<br>
+</style>
+
 <h2>{{error}}</h2>
-		
-		<form method="POST">
-			<div class="form-group" >
-			{% csrf_token %}
-			{{ form.as_p }}
-			<button class="btn btn-success" type="submit">Sign Up</button>
-		</div>
-		</form>
-		
+<form method="POST">
+    {% csrf_token %}
+ <!--Section: Live preview-->
+ <div class="d">
+<section class="form-dark">
+
+  <!--Form without header-->
+  <div class="card card-image"
+    style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table7.jpg'); width: 28rem;">
+    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+      <!--Header-->
+      <div class="text-center">
+        <h3  class="alert alert-success" class="white-text mb-5 mt-4 font-weight-bold" ><strong>SIGNUP</strong> </h3>
+      </div>
+
+      <!--Body-->
+      <div class="md-form">
+        <h3 class="f">username</h3>
+        <label for="Form-email5">{{form.username}}</label>
+      </div>
+
+      <div class="md-form pb-3">
+        <h3 class="f"> Password</h3>
+        <label for="Form-pass5">{{form.password1}}</label>
+       
+      </div>
+      <div class="md-form pb-3">
+        <h3 class="f">VerifyPassword</h3>
+        <label for="Form-pass5">{{form.password2}}</label>
+       
+      </div>
+
+      <!--Grid row-->
+      <div class="row d-flex align-items-center mb-4">
+
+        <!--Grid column-->
+        <div class="text-center mb-3 col-md-12">
+          <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Sign Up</button>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+
+      <!--Grid column-->
+      <div class="col-md-12">
+        <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="{%url 'loginuser' %}"
+            class="green-text ml-1 font-weight-bold"> Sign up</a></p>
+      </div>
+      <!--Grid column-->
+
+    </div>
+  </div>
+  <!--/Form without header-->
+
+</section>
+<!--Section: Live preview-->
+</form>
 </div>
 {% endblock %}

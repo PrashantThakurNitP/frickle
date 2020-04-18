@@ -27,8 +27,33 @@ def feeds(request):
 
     
     return render(request,"posts/feeds.html",{"feeds":feeds1})
+@login_required
+def upvote(request,id1):
+    #feedsModel.objects.filter(pk=request.pk).update(upvote = upvote+1)
+    #obj=get_object_or_404(feedsModel,id=id1,user=request.user_new)
+    obj=feedsModel.objects.get(pk=id1)
+    obj.upvote+=1
+    obj.save()
+    #s = get_object_or_404(feedsModel,  pk=question_id)
+    #s.upvote+=1 
+    #s.save(update_fields=["upvote"]) 
 
+    
+    return redirect('feeds')
 
+@login_required
+def delete(request,id1):
+    #feedsModel.objects.filter(pk=request.pk).update(upvote = upvote+1)
+    #obj=get_object_or_404(feedsModel,id=id1,user=request.user_new)
+    obj=feedsModel.objects.get(pk=id1)
+    if request.method== 'POST':
+       
+        obj.delete()
+        #after that we will send user back to current list of items
+        
+
+    
+    return redirect('feeds')
 
 
 

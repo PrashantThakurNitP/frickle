@@ -1,6 +1,23 @@
 {% extends 'todo/base_todo.html' %}
 
 {% block content %}
+
+
+
+<style type="text/css">
+      #a1{
+font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+}
+#b1
+{
+      font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Great Vibes', cursive;
+}
+</style>
 <div class="container text-center">
 <h1 class="alert alert-success">Current Todo</h1>
 <ul>
@@ -12,7 +29,7 @@
       		{{todo.title}} <!-- way to highlight if impotant -->
 
       	{% if todo.important %}</b>{% endif %}
-      	{% if todo.memo %} - {{todo.memo}} {% endif %}
+      	<p id="b1">{% if todo.memo %} - {{todo.memo}} {% endif %}</p>
       </a>
       </h4>
       </div>
