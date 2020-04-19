@@ -27,7 +27,7 @@
 
 
 {% if user.is_authenticated %}
-<div class="container-md">
+<div >
 <nav class="navbar navbar-dark bg-dark">
   
 <ul class="nav justify-content-end">
@@ -39,23 +39,29 @@
 
 		  
 
-		 
+		  <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
 		  
 		 
 		  <h3 class="nav-item">
-		    <a class="nav-link" href="{% url "createtodo" %}">CREATE</a>
+		    <a class="btn btn-warning" href="{% url "createtodo" %}">CREATE</a>
 		  </h3>
+		   <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
 		  
 		  	<h3 class="nav-item">
 		    <a class="btn btn-success" class="nav-link active" href="{% url 'home_todo' %}">TODO</a>
 		  </h3>
+		   <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
 		  <h3>
-		    <a class="nav-link" href="{% url "currenttodos" %}">ACTIVE</a>
+		    <a class="btn btn-light" href="{% url "currenttodos" %}">ACTIVE</a>
 		  </h3>
+		   <h3 class="nav-item"><button type="button" class="btn btn-default" >  </h3>
+
 		   <h3 class="nav-item">
-		    <a class="nav-link" href="{% url "completedtodos" %}">COMPLETED</a>
+		    <a class="btn btn-primary" href="{% url "completedtodos" %}">COMPLETED</a>
 		  </h3>
-		  
+		  </ul>
+
+		  <ul class="nav justify-content-end">
  
 
 			    <h3 class="nav-item"><button type="button" class="btn btn-success">   

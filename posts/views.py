@@ -28,18 +28,33 @@ def feeds(request):
     
     return render(request,"posts/feeds.html",{"feeds":feeds1})
 @login_required
-def upvote(request,id1):
+def upvote(request,id1,up):
     #feedsModel.objects.filter(pk=request.pk).update(upvote = upvote+1)
     #obj=get_object_or_404(feedsModel,id=id1,user=request.user_new)
     obj=feedsModel.objects.get(pk=id1)
-    obj.upvote+=1
+    s1=str(up)
+    sall=str(obj.upvoter)
+    #sall=sall+"?"
+    ulist=sall.split()
+    if s1 in ulist:
+        #return render(request,"feeds.html",{"upvoter":request.user.username})
+        return redirect("feeds")
+        #pass
+    else:
+    #upvoterlist=txt.split("{")
+    
+        obj.upvote+=1
+        sall=sall+' '
+        sall=sall+s1
+        obj.upvoter=sall
+        
     obj.save()
     #s = get_object_or_404(feedsModel,  pk=question_id)
     #s.upvote+=1 
     #s.save(update_fields=["upvote"]) 
-
-    
-    return redirect('feeds')
+    return redirect("feeds")
+    #return render(request,"posts/error.html",{"upvoter":request.user.username,"ulist":ulist})
+    #return redirect('feeds')
 
 @login_required
 def delete(request,id1):

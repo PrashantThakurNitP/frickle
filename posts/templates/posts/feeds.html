@@ -32,7 +32,7 @@ font-family: 'Great Vibes', cursive;
                    
                         {% endif %}
                   </br>
-
+                          upvoter{{feed.upvoter}}
       	<p id="b1">{% if feed.description %} - {{feed.description}} {% endif %}</p>
                         {{feed.upvote}} like
                         
@@ -52,7 +52,7 @@ font-family: 'Great Vibes', cursive;
                         
 
 
-                  <form method ="POST" action="{% url 'upvote' feed.id %}">
+                  <form method ="POST" action="{% url 'upvote' feed.id user.username %}">
                                           {% csrf_token %}
 
                                           <button class="btn btn-success" type="submit">Like</button>
