@@ -1,0 +1,65 @@
+
+
+
+
+<!--  start --->
+{% extends 'posts/base.html' %}
+
+{% load static %}
+{% block content %}
+<style type="text/css">
+      #a1{
+font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+}
+#b1
+{
+      font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Great Vibes', cursive;
+}
+</style>
+<h1 class="alert alert-success">PRIVATE CHAT</h1>
+<ul>
+	
+	
+{% for message1  in messagessent %}
+<div class="alert alert-warning">
+<b>sender ---->{{message1.sender}}</b>
+	<br>
+	{% if message1.title %}
+message received ---->{{message1.title}}
+<br>
+{% endif %}
+
+
+{% if message1.receiver %}
+<b>receiver ---> {{message1.receiver}}</b>
+
+{% endif %}
+</div>
+{% endfor %}
+		
+{% for message1  in messagesrec %}
+<div class="alert alert-warning">
+<b>sender ---->{{message1.sender}}</b>
+	<br>
+	{% if message1.title %}
+message received ---->{{message1.title}}
+<br>
+{% endif %}
+
+
+<b>Receiver ---> {{message1.receiver}}</b>
+<br>
+
+</div>
+{% endfor %}
+
+
+
+</ul>
+
+{% endblock %}

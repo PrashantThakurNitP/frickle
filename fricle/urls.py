@@ -30,7 +30,9 @@ urlpatterns = [
     path('addpost/',views.addpost,name="addpost"),
     path('upvote/<int:id1>/<str:up>/',views.upvote,name="upvote"),  #changed in upvote fn in views.py and feeds.html in upvote link
     path('delete/<int:id1>/',views.delete,name="delete"), 
-    path('todo/', include('todo.urls'))
+    path('todo/', include('todo.urls')),
+    path('messenger/', include('messenger.urls')),
+
     #path('addpost/',views.addpost,name="addpost"),
 ]
 

@@ -1,0 +1,75 @@
+
+
+
+
+<!--  start --->
+{% extends 'posts/base.html' %}
+
+{% load static %}
+{% block content %}
+<style type="text/css">
+      #a1{
+font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+}
+#b1
+{
+      font-family: 'Permanent Marker', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Great Vibes', cursive;
+}
+</style>
+<h1 class="alert alert-success">PRIVATE CHAT</h1>
+<ul>
+	
+
+{% for message  in mylist  %}
+
+
+			 {% if message.sender == user %}
+
+					<div class="alert alert-warning">
+					<b>sender ---->{{message.sender}}</b>
+						<br>
+						{% if message.title %}
+					message received ---->{{message.title}}
+					<br>
+					{% endif %}
+
+
+					{% if message.receiver %}
+					<b>receiver ---> {{message.receiver}}</b>
+						</div>
+					{% endif %}
+
+			
+
+
+			 {% else %}
+					<div class="alert alert-success">
+					<b>sender ---->{{message.sender}}</b>
+					<br>
+						{% if message.title %}
+					message received ---->{{message.title}}
+					<br>
+					{% endif %}
+
+					{% if message.receiver %}
+					<b>Receiver ---> {{message.receiver}}</b>
+					<br>
+
+					</div>
+					{% endif %}
+				{% endif %}
+
+
+{% endfor %}
+
+
+
+
+</ul>
+
+{% endblock %}
