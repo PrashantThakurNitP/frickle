@@ -30,7 +30,7 @@ def sendmessage(request):
                newmessage.date1=datetime.now() 
                newmessage.save()#now it put it in database
                #after saving  this we want to send them to current page so that they can see current to do
-               return redirect('home')
+               return redirect('viewmessage')
         except ValueError:
                return redirect('sendmessage')
                 #if length of title is long we send back to same page otherwise we will get error
@@ -52,9 +52,11 @@ def viewmessage(request):
     #messages=messageModel.objects.all().order_by("-date1")
     #u1=takeuser(r1)
     u1 = request.user
-    messagesrec=messageModel.objects.filter(receiver=u1).order_by("-date1")
-    
-    messagessent=messageModel.objects.filter(sender=request.user).order_by("-date1")#if we apply .all then for person everyon to do list will be shown
+    mylist=messageModel.objects.filter(receiver=u1).order_by("-date1")|messageModel.objects.filter(sender=request.user).order_by("-date1")
+    return render(request,'messenger/messageview.html',{"mylist":mylist})
+    #messagesrec=messageModel.objects.filter(receiver=u1).order_by("-date1")
+    #messagessent=messageModel.objects.filter(sender=request.user).order_by("-date1")#if we apply .all then for person everyon to do list will be shown
+    """
     l=[]
     l1=messagesrec.count()
     l2=messagessent.count()
@@ -77,3 +79,4 @@ def viewmessage(request):
     mylist= l
     return render(request,'messenger/messageview.html',{"mylist":mylist})
     #{'messagessent':messagessent,'messagesrec':messagesrec,}
+"""
