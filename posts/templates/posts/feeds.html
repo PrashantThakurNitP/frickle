@@ -15,7 +15,7 @@ font-family: 'Fredoka One', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Great Vibes', cursive;
 }
-      
+
 body {
   background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
   background-repeat: repeat-y;
@@ -31,21 +31,21 @@ body {
 	{% for feed in feeds %}
             <div margin left=-1vw class="jumbotron text-center">
       	<h2><b>{{feed.title}} </b></h2><!-- way to highlight if impotant -->
-      	
-                  @ {{feed.user_new}}  
-                  
+
+                  @ {{feed.user_new}}
+
 
                 </br>
-                  
+
                   {% if feed.image %}
                   <img src="{{ feed.image.url }}",height=200, width=200>
-                   
+
                         {% endif %}
                   </br>
-                          upvoter{{feed.upvoter}}
+
       	<p id="b1">{% if feed.description %} - {{feed.description}} {% endif %}</p>
                         {{feed.upvote}} like
-                        
+
             {% ifequal feed.user_new.username user.username  %}
 
 
@@ -59,7 +59,7 @@ body {
 
             {% endifequal %}
             {% ifnotequal feed.user_new.username user.username %}
-                        
+
 
 
                   <form method ="POST" action="{% url 'upvote' feed.id user.username %}">
@@ -69,12 +69,14 @@ body {
                                     </form>
 
             {% endifnotequal %}
+            <br>
+             liked by : {{feed.upvoter}}
 
       </div>
 
-     
-		 
-     
+
+
+
 	{% endfor %}
 
 </ul>

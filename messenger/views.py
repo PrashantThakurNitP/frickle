@@ -10,13 +10,13 @@ from .models import messageModel
 from django.utils import timezone
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
-
+from django.utils import timezone
 # Create your views here.
-@login_required  
+@login_required
 def sendmessage(request):
     if request.method =="GET": #when user first visit form show the form
         return render(request,"messenger/sendmessage.html",{'form':messageForm()})
-        
+
     else:
         try:
                #if length is not large we send save it
@@ -25,9 +25,9 @@ def sendmessage(request):
                form=messageForm(request.POST)
                #whatever user sent in post method we cnvert it to TodoForm form ie form
                newmessage=form.save(commit=False) #commit =False means donot unnecessarily save it into database
-               #in newtodo user field is missing 
+               #in newtodo user field is missing
                newmessage.sender=request.user#sende is title
-               newmessage.date1=datetime.now() 
+               newmessage.date1=timezone.now()
                newmessage.save()#now it put it in database
                #after saving  this we want to send them to current page so that they can see current to do
                return redirect('viewmessage')
@@ -35,28 +35,44 @@ def sendmessage(request):
                return redirect('sendmessage')
                 #if length of title is long we send back to same page otherwise we will get error
 """
-@login_required       
+@login_required
 def receivedmessage(request):
     messages=messageModel.objects.filter(receiver=User.username).order_by("-date1")
     #messages=messageModel.objects.all().order_by("-date1")#if we apply .all then for person everyon to do list will be shown
     return render(request,'messenger/messageview.html',{'messages':messages,"r1":User.username})
     #request.user.username is way to acess this person logged in logged in
-@login_required       
+@login_required
 def sentmessage(request):
     #messages=messageModel.objects.all().order_by("-date1")
     messages=messageModel.objects.filter(sender=request.user).order_by("-date1")#if we apply .all then for person everyon to do list will be shown
     return render(request,'messenger/messageview.html',{'messages':messages})
 """
-@login_required       
+@login_required
 def viewmessage(request):
     #messages=messageModel.objects.all().order_by("-date1")
     #u1=takeuser(r1)
     u1 = request.user
     mylist=messageModel.objects.filter(receiver=u1).order_by("-date1")|messageModel.objects.filter(sender=request.user).order_by("-date1")
     return render(request,'messenger/messageview.html',{"mylist":mylist})
+"""
+@login_required
+def viewmessage(request):
+    #messages=messageModel.objects.all().order_by("-date1")
+    #u1=takeuser(r1)
+    u1 = request.user
+<<<<<<< HEAD
+    mylist=messageModel.objects.filter(receiver=u1).order_by("-date1")|messageModel.objects.filter(sender=request.user).order_by("-date1")
+    return render(request,'messenger/messageview.html',{"mylist":mylist})
     #messagesrec=messageModel.objects.filter(receiver=u1).order_by("-date1")
     #messagessent=messageModel.objects.filter(sender=request.user).order_by("-date1")#if we apply .all then for person everyon to do list will be shown
     """
+#=======
+"""
+    messagesrec=messageModel.objects.filter(receiver=u1).order_by("-date1")
+
+    messagessent=messageModel.objects.filter(sender=request.user).order_by("-date1")#if we apply .all then for person everyon to do list will be shown
+#>>>>>>> 7ab75a9b38721b9e5711a72b786e10b8b71d4226
+    
     l=[]
     l1=messagesrec.count()
     l2=messagessent.count()
@@ -79,4 +95,9 @@ def viewmessage(request):
     mylist= l
     return render(request,'messenger/messageview.html',{"mylist":mylist})
     #{'messagessent':messagessent,'messagesrec':messagesrec,}
+#<<<<<<< HEAD
+"""
+#=======
+"""
+#>>>>>>> 7ab75a9b38721b9e5711a72b786e10b8b71d4226
 """
