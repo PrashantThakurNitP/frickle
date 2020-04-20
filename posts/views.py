@@ -1,5 +1,5 @@
 
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm 
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User#help to create user object quickly
 #this is user model we would be working with
 from django.http import HttpResponse
@@ -25,7 +25,7 @@ def home(request):
 def feeds(request):
     feeds1=feedsModel.objects.all()#if we apply .all then for person everyon to do list will be shown
 
-    
+
     return render(request,"posts/feeds.html",{"feeds":feeds1})
 @login_required
 def upvote(request,id1,up):
@@ -42,16 +42,16 @@ def upvote(request,id1,up):
         #pass
     else:
     #upvoterlist=txt.split("{")
-    
+
         obj.upvote+=1
         sall=sall+' '
         sall=sall+s1
         obj.upvoter=sall
-        
+
     obj.save()
     #s = get_object_or_404(feedsModel,  pk=question_id)
-    #s.upvote+=1 
-    #s.save(update_fields=["upvote"]) 
+    #s.upvote+=1
+    #s.save(update_fields=["upvote"])
     return redirect("feeds")
     #return render(request,"posts/error.html",{"upvoter":request.user.username,"ulist":ulist})
     #return redirect('feeds')
@@ -62,12 +62,12 @@ def delete(request,id1):
     #obj=get_object_or_404(feedsModel,id=id1,user=request.user_new)
     obj=feedsModel.objects.get(pk=id1)
     if request.method== 'POST':
-       
+
         obj.delete()
         #after that we will send user back to current list of items
-        
 
-    
+
+
     return redirect('feeds')
 
 
@@ -80,9 +80,10 @@ def logoutuser(request):
         return redirect('home')#redirect to homepage after logout
     else:
         return redirect('loginuser')
-
 def signupuser(request):
-    if request.method== 'GET' : 
+    if request.user.is_authenticated:
+        return redirect('home')
+    if request.method== 'GET' :
         #we need to distinguish betwen when someone do get and post
         #if request method is get we need to return signup page and form like this
         return render(request,"posts/signupuser.html",{'form':UserCreationForm()})
@@ -92,7 +93,7 @@ def signupuser(request):
     else:
         #create new user
         #POST method is always from form
-        #when someone fill form and click submit in that case we need to save the 
+        #when someone fill form and click submit in that case we need to save the
         #user in data base
         # we don't need to create user model
         #there is already the auth app , ie is present in setting
@@ -100,13 +101,14 @@ def signupuser(request):
         #********************************************************************
         #when someone has done post to us we need to create that user object
 
-
-        if request.POST['password1']==request.POST['password2']: #
+        str1=str(request.POST['username'])
+        lst=str1.split()
+        if request.POST['password1']==request.POST['password2'] and len(lst)==1: #
             #first we need to verify first and second password
-            #if password match then go and create user object 
+            #if password match then go and create user object
             try:
                 user=User.objects.create_user( username=request.POST['username'], password=request.POST['password1'] )
-                #this is function that django has made which make it easy to create new 
+                #this is function that django has made which make it easy to create new
                 #user object.  Inside this we pass username and password
                 #request.POST is like dictionary
                 #in user ,name that is going to submit is username , password1  and password2
@@ -115,18 +117,19 @@ def signupuser(request):
                 #after sigin we take them them to current page which show current to do page
                 return redirect('feeds')
             except IntegrityError:
+
                 return render(request,"posts/signupuser.html",{'form':UserCreationForm(),"error":"username already taken"})
+        elif len(lst)>1:
+            return render(request,"posts/signupuser.html",{'form':UserCreationForm(),'error':"space not allowed in username"})
         else:
             #print("Password didnot match .Go back and try again")
             return render(request,"posts/signupuser.html",{'form':UserCreationForm(),'error':"password not matching"})
             #tell  the user password donot match
             #create new user
 
-
-
 """
 def loginuser(request):
-    if request.method== 'POST' : 
+    if request.method== 'POST' :
         return render(request,"posts/loginuser.html",{"user":request.POST['username']})
         #return render(request,"posts/loginuser.html",{'form':AuthenticationForm()})
     else:
@@ -137,14 +140,14 @@ def loginuser(request):
              #if user is none send them to same page with error
         else:
             #login
-            login(request,user) 
+            login(request,user)
             return redirect('feeds')
 
 """
 
 def loginuser(request):
-    if request.method== 'GET' : 
-        
+    if request.method== 'GET' :
+
         return render(request,"posts/loginuser.html",{'form':AuthenticationForm()})
     else:
         user =authenticate(request,username=request.POST['username'], password=request.POST['password'])
@@ -153,28 +156,28 @@ def loginuser(request):
              #if user is none send them to same page with error
         else:
             #login
-            login(request,user) 
+            login(request,user)
             return redirect('feeds')
 @login_required
 def addpost(request):
     if request.method =="GET": #when user first visit form show the form
         return render(request,"posts/addpost.html",{'form':feedsForm()})
-        
+
     else:
         try:
                #if length is not large we send save it
                #when he click submit
                #fetch information from post request
                form=feedsForm(request.POST,request.FILES)
-               
-               newtodo=form.save(commit=False) 
+
+               newtodo=form.save(commit=False)
 
 
 
 
                #whatever user sent in post method we cnvert it to TodoForm form ie form
                #newtodo=form.save(commit=False) #commit =False means donot unnecessarily save it into database
-               #in newtodo user field is missing 
+               #in newtodo user field is missing
                if request.user.is_authenticated:
                         newtodo.user_new=request.user
                newtodo.save()#now it put it in database
@@ -193,4 +196,4 @@ def addpost(request):
        #we need to check whether they have given cotrrect username or not
         #authenticate return user object
        #we need to check whether they have given cotrrect username or not
-       
+

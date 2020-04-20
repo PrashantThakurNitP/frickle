@@ -20,10 +20,18 @@ font-family: 'Fredoka One', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Great Vibes', cursive;
 }
+
+body {
+  background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
+  background-repeat: repeat-y;
+  background-size: 100vw 100vh;
+  margin-top: 0vw;
+}
 </style>
+<body>
 <h1 class="alert alert-success">PRIVATE CHAT</h1>
 <ul>
-	
+
 
 {% for message  in mylist  %}
 
@@ -41,10 +49,12 @@ font-family: 'Great Vibes', cursive;
 
 					{% if message.receiver %}
 					<b>receiver ---> {{message.receiver}}</b>
+					<br>
+					Time --->{{message.date1}} GMT + 5:30
 						</div>
 					{% endif %}
 
-			
+
 
 
 			 {% else %}
@@ -59,6 +69,7 @@ font-family: 'Great Vibes', cursive;
 					{% if message.receiver %}
 					<b>Receiver ---> {{message.receiver}}</b>
 					<br>
+					Time --->{{message.date1}} GMT + 5:30
 
 					</div>
 					{% endif %}
@@ -71,5 +82,6 @@ font-family: 'Great Vibes', cursive;
 
 
 </ul>
+<body>
 
 {% endblock %}

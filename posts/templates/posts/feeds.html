@@ -15,27 +15,37 @@ font-family: 'Fredoka One', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Great Vibes', cursive;
 }
+
+body {
+  background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
+  background-repeat: repeat-y;
+  background-size: 100vw 100vh;
+  margin-top: 0vw;
+}
 </style>
-<h1 class="alert alert-success">POSTS</h1>
+<body>
+<div class="container text-center">
+<h1 class="container p-3 my-3 bg-dark text-white">POSTS</h1>
+</div>
 <ul>
 	{% for feed in feeds %}
             <div class="jumbotron text-center">
       	<h2><b>{{feed.title}} </b></h2><!-- way to highlight if impotant -->
-      	
-                  @ {{feed.user_new}}  
-                  
+
+                  @ {{feed.user_new}}
+
 
                 </br>
-                  
+
                   {% if feed.image %}
                   <img src="{{ feed.image.url }}",height=200, width=200>
-                   
+
                         {% endif %}
                   </br>
-                          upvoter{{feed.upvoter}}
+
       	<p id="b1">{% if feed.description %} - {{feed.description}} {% endif %}</p>
                         {{feed.upvote}} like
-                        
+
             {% ifequal feed.user_new.username user.username  %}
 
 
@@ -49,7 +59,7 @@ font-family: 'Great Vibes', cursive;
 
             {% endifequal %}
             {% ifnotequal feed.user_new.username user.username %}
-                        
+
 
 
                   <form method ="POST" action="{% url 'upvote' feed.id user.username %}">
@@ -59,14 +69,16 @@ font-family: 'Great Vibes', cursive;
                                     </form>
 
             {% endifnotequal %}
+            <br>
+             liked by : {{feed.upvoter}}
 
       </div>
 
-     
-		 
-     
+
+
+
 	{% endfor %}
 
 </ul>
-
+</body>
 {% endblock %}

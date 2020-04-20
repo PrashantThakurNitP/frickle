@@ -1,6 +1,16 @@
 {% load static %}
 
-
+<style>
+    #p1 {background-color:#3F729B ;
+        color: white;
+    }
+    #p2 {background-color:#1C2331 ;}
+    #i2
+    {
+        margin-left :1vw;
+        margin-right :1vw;
+    }
+</style>
 
 <!--   navbar end  -->
 <!doctype html>
@@ -26,40 +36,44 @@
 
 
 {% if user.is_authenticated %}
-<div>
+<div   >
 
-<nav class="navbar navbar-dark bg-dark">
+<nav id="p2" class="navbar ">
 
-<ul class="nav justify-content-end">
+<ul class="nav justify-content-space-between">
       <li class="nav-item">
-        <a class="btn btn-info" class="nav-link active" href="{% url 'home' %}">HOME</a>
+        <a class="btn " id="p1"  class="nav-link active" href="{% url 'home' %}">HOME</a>
       </li>
 
 
              <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
       <li class="nav-item">
-        <a class="btn btn-warning" href="{% url 'feeds' %}">YOUR FEEDS</a>
-      </li>
-       <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
-      <li class="nav-item">
-        <a class="btn btn-success" href="/todo/">TODO</a>
-      </li>
-       <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
-       <li class="nav-item">
-        <a class="btn btn-primary" href="{% url 'addpost' %}">ADDPOST</a>
+        <a id="p1"  class="btn " href="{% url 'feeds' %}">YOUR FEEDS</a>
       </li>
 
- <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
+       <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
        <li class="nav-item">
-        <a class="btn btn-success" id="a1" href="{% url 'viewmessage' %}">YOUR CHAT</a>
+        <a id="p1"  class="btn " href="{% url 'addpost' %}">ADDPOST</a>
+      </li>
+
+ <h2 class="nav-item"> <button type="button" class="btn btn-default" ></h2>
+       <li class="nav-item">
+        <a id="p1"  class="btn " id="a1" href="{% url 'viewmessage' %}">YOUR CHAT</a>
       </li>
        <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
         <li class="nav-item">
-        <a class="btn btn-info" id="a1" href="{% url 'sendmessage' %}">SEND MESSAGE</a>
+        <a id="p1"  class="btn " id="a1" href="{% url 'sendmessage' %}">SEND MESSAGE</a>
       </li>
- 
-
+       <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
+      <li class="nav-item">
+        <a id="p1" class="btn " href="/todo/">TODO</a>
+      </li>
 </ul>
+
+
+
+
+
 
   <ul class="nav justify-content-end">
           <h2 class="nav-item"><button type="button" class="btn btn-success">
@@ -75,13 +89,17 @@
         </h2>
     </ul>
 </nav>
+
+
+
 </div>
 
 
 
 {% else %}
+<div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-dark bg-dark">
 
 <ul class="nav justify-content-end">
        <li class="nav-item">
@@ -95,6 +113,7 @@
       </li>
 </ul>
 </nav>
+</div>
 {% endif %}
 
 

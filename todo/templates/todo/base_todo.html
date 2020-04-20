@@ -27,26 +27,26 @@
 
 
 {% if user.is_authenticated %}
-<div >
+<div  >
 <nav class="navbar navbar-dark bg-dark">
-  
-<ul class="nav justify-content-end">
+
+<ul class="nav justify-content-space-between">
 
 
 	<h3 class="nav-item">
 		    <a class="btn btn-info" class="nav-link active" href="{% url 'home' %}">HOME</a>
 		  </h3>
 
-		  
+
 
 		  <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
-		  
-		 
+
+
 		  <h3 class="nav-item">
 		    <a class="btn btn-warning" href="{% url "createtodo" %}">CREATE</a>
 		  </h3>
 		   <h2 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
-		  
+
 		  	<h3 class="nav-item">
 		    <a class="btn btn-success" class="nav-link active" href="{% url 'home_todo' %}">TODO</a>
 		  </h3>
@@ -61,18 +61,20 @@
 		  </h3>
 		  </ul>
 
-		  <ul class="nav justify-content-end">
- 
+  <ul class="nav justify-content-end">
 
-			    <h3 class="nav-item"><button type="button" class="btn btn-success">   
+  <h3 class="nav-item"><button type="button" class="btn btn-default" >  </h3>
+
+
+			    <h3 class="nav-item"><button type="button" class="btn btn-success">
 			  			Logged in as {{user.username}}</button> </h2>
-			    <h3 class="nav-item"><button type="button" class="btn btn-default" >  </h2>
+			    <h3 class="nav-item"><button type="button" class="btn btn-default" >  </h3>
 
-				 <h3  class="nav-item" > 
+				 <h3  class="nav-item" >
 						<form action="{% url 'logoutuser' %}" method="POST">
 							{% csrf_token %}
 							<button  class="btn btn-danger" type="submit">LOGOUT</button>
-							
+
 						</form>
 				</h3>
 	  </ul>
@@ -82,14 +84,14 @@
 
 
 {% else %}
-
+<div>
 <nav class="navbar navbar-dark bg-dark">
 
 <ul class="nav justify-content-end">
 			 <li class="nav-item">
 			<a   class="btn btn-info" class="nav-link active" href="{% url 'signupusertodo' %}">SignUp</a>
 			</li>
-			<h2 class="nav-item"> 
+			<h2 class="nav-item">
      				<a class="nav-link" href="">    </a>
 			 </h2>
 			 <li class="nav-item">
@@ -97,6 +99,7 @@
 			</li>
 </ul>
 </nav>
+</div>
 {% endif %}
 
 
