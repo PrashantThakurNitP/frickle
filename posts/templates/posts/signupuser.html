@@ -13,9 +13,18 @@
     position:relative;
       align-self: center;
       
-          padding-left: 20vw;
+          margin-left: auto;
+          margin-right: auto;
   }
-
+.g{
+  color:red;
+}
+body {
+  background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 0vw;
+}
 </style>
 
 <h2>{{error}}</h2>
@@ -47,7 +56,7 @@
        
       </div>
       <div class="md-form pb-3">
-        <h3 class="f">VerifyPassword</h3>
+        <h3 class="f">Verify Password</h3>
         <label for="Form-pass5">{{form.password2}}</label>
        
       </div>
@@ -66,7 +75,7 @@
       <!--Grid column-->
       <div class="col-md-12">
         <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="{%url 'loginuser' %}"
-            class="green-text ml-1 font-weight-bold"> Sign up</a></p>
+            class="green-text ml-1 font-weight-bold"><h3 class="g"> Log in</h3></a></p>
       </div>
       <!--Grid column-->
 

@@ -15,8 +15,18 @@ font-family: 'Fredoka One', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Great Vibes', cursive;
 }
+      
+body {
+  background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 0vw;
+}
 </style>
-<h1 class="alert alert-success">POSTS</h1>
+<body>
+<div class="container text-center">
+<h1 class="container p-3 my-3 bg-dark text-white">POSTS</h1>
+</div>
 <ul>
 	{% for feed in feeds %}
             <div class="jumbotron text-center">
@@ -68,5 +78,5 @@ font-family: 'Great Vibes', cursive;
 	{% endfor %}
 
 </ul>
-
+</body>
 {% endblock %}
