@@ -100,8 +100,9 @@ def signupuser(request):
         #********************************************************************
         #when someone has done post to us we need to create that user object
 
-
-        if request.POST['password1']==request.POST['password2']: #
+        str1=str(request.POST['username'])
+        lst=str1.split()
+        if request.POST['password1']==request.POST['password2'] and len(lst)==1: #
             #first we need to verify first and second password
             #if password match then go and create user object 
             try:
@@ -115,7 +116,10 @@ def signupuser(request):
                 #after sigin we take them them to current page which show current to do page
                 return redirect('feeds')
             except IntegrityError:
+         
                 return render(request,"posts/signupuser.html",{'form':UserCreationForm(),"error":"username already taken"})
+        elif len(lst)>1:
+            return render(request,"posts/signupuser.html",{'form':UserCreationForm(),'error':"space not allowed in username"})
         else:
             #print("Password didnot match .Go back and try again")
             return render(request,"posts/signupuser.html",{'form':UserCreationForm(),'error':"password not matching"})
