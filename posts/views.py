@@ -82,6 +82,8 @@ def logoutuser(request):
         return redirect('loginuser')
 
 def signupuser(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method== 'GET' : 
         #we need to distinguish betwen when someone do get and post
         #if request method is get we need to return signup page and form like this

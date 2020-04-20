@@ -21,13 +21,13 @@
 
 body {
   background-image: url('https://cdn.dribbble.com/users/722246/screenshots/11096994/media/abcf2fe91c135bbaec19a3816dd0a992.gif');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-size: 100vw 100vh;
   margin-top: 0vw;
 }
 </style>
 
-<h2>{{error}}</h2>
+<h2 class="g">{{error}}</h2>
 <form method="POST">
     {% csrf_token %}
  <!--Section: Live preview-->
@@ -73,7 +73,7 @@ body {
 
       <!--Grid column-->
       <div class="col-md-12">
-        <p class="font-small white-text d-flex justify-content-end"><h3 class="g">Don't an account? </h3><a href="{%url 'signupuser' %}"
+        <p class="font-small white-text d-flex justify-content-end"><h3 class="g">Don't have an account? </h3><a href="{%url 'signupuser' %}"
             class="green-text ml-1 font-weight-bold"> SIGN UP</a></p>
       </div>
       <!--Grid column-->
